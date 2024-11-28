@@ -14,35 +14,31 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { NavSection } from "./nav-section";
 
 // Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "/",
-    icon: Home,
-  },
-  {
-    title: "Share",
-    url: "/share",
-    icon: QrCode,
-  },
-  // {
-  //   title: "Calendar",
-  //   url: "#",
-  //   icon: Calendar,
-  // },
-  // {
-  //   title: "Search",
-  //   url: "#",
-  //   icon: Search,
-  // },
-  // {
-  //   title: "Settings",
-  //   url: "#",
-  //   icon: Settings,
-  // },
-];
+const data = {
+  navMain: [
+    {
+      name: "Home",
+      url: "/",
+      icon: Home,
+      isActive: true,
+    },
+    {
+      name: "QR Code",
+      url: "/qr-code",
+      icon: QrCode,
+    },
+  ],
+  navOther: [
+    {
+      name: "QA Code",
+      url: "/qi-code",
+      icon: QrCode,
+    },
+  ],
+};
 
 export function AppSidebar() {
   const { setOpen, setOpenMobile, isMobile } = useSidebar();
@@ -61,18 +57,10 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url} onClick={handleLinkClick}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+            <SidebarContent>
+              <NavSection projects={data.navMain} />
+              <NavSection projects={data.navOther} />
+            </SidebarContent>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
