@@ -20,15 +20,15 @@ const data = {
       icon: Home,
       isActive: true,
     },
-    {
-      name: "QR Code",
-      url: "/share",
-      icon: QrCode,
-    },
   ],
   navOther: [
     {
-      name: "QA Code",
+      name: "About Us",
+      url: "/about",
+      icon: Home,
+    },
+    {
+      name: "QR Code",
       url: "/share",
       icon: QrCode,
     },
@@ -43,7 +43,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarContent>
-              <NavSection projects={data.navMain} label="Main" />
+              <NavSection projects={data.navMain} label="Project" />
               <NavSection projects={data.navOther} label="Info" />
             </SidebarContent>
           </SidebarGroupContent>
