@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import BreadcrumbResponsive from "@/components/ui/breadcrumb-responsive";
-import { cookies } from "next/headers"
+import { cookies } from "next/headers";
+import MdxLayout from "@/components/ui/layouts/mdx-layout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,7 +25,9 @@ export const metadata: Metadata = {
 
 export async function Layout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get("sidebar:state")?.value === "true" || cookieStore.get("sidebar:state") === undefined;
+  const defaultOpen =
+    cookieStore.get("sidebar:state")?.value === "true" ||
+    cookieStore.get("sidebar:state") === undefined;
   return (
     <html lang="en">
       <body
@@ -35,7 +38,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
           <main className="w-full">
             <SidebarTrigger />
             <BreadcrumbResponsive />
-            {children}
+            <MdxLayout>{children}</MdxLayout>
           </main>
         </SidebarProvider>
       </body>
