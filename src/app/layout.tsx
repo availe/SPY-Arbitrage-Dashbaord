@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./markdown.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import BreadcrumbResponsive from "@/components/ui/breadcrumb-responsive";
 import { cookies } from "next/headers";
-import MdxLayout from "@/components/ui/layouts/mdx-layout";
+import MdxLayout from "@/components/ui/mdx-layout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
