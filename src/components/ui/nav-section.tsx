@@ -24,29 +24,40 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import Link from 'next/link'
 
 export function NavSection({
   projects,
+  label,
 }: {
   projects: {
     name: string
     url: string
     icon: LucideIcon
-  }[]
+  }[],
+  label: string
 }) {
-  const { isMobile } = useSidebar()
+  const { setOpen, setOpenMobile, isMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    } else {
+      setOpen(true);
+    }
+  };
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item, index) => (
           <SidebarMenuItem key={`${item.name}-${index}`}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <Link href={item.url} onClick={handleLinkClick}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

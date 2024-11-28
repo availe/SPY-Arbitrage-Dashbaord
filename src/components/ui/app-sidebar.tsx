@@ -1,7 +1,6 @@
 "use client";
 
 import { Home, QrCode } from "lucide-react";
-import Link from "next/link";
 
 import {
   Sidebar,
@@ -9,10 +8,6 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
 } from "@/components/ui/sidebar";
 import { NavSection } from "./nav-section";
 
@@ -27,30 +22,20 @@ const data = {
     },
     {
       name: "QR Code",
-      url: "/qr-code",
+      url: "/share",
       icon: QrCode,
     },
   ],
   navOther: [
     {
       name: "QA Code",
-      url: "/qi-code",
+      url: "/share",
       icon: QrCode,
     },
   ],
 };
 
 export function AppSidebar() {
-  const { setOpen, setOpenMobile, isMobile } = useSidebar();
-
-  const handleLinkClick = () => {
-    if (isMobile) {
-      setOpenMobile(false);
-    } else {
-      setOpen(true);
-    }
-  };
-
   return (
     <Sidebar>
       <SidebarContent>
@@ -58,8 +43,8 @@ export function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarContent>
-              <NavSection projects={data.navMain} />
-              <NavSection projects={data.navOther} />
+              <NavSection projects={data.navMain} label="Main" />
+              <NavSection projects={data.navOther} label="Info" />
             </SidebarContent>
           </SidebarGroupContent>
         </SidebarGroup>
