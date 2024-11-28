@@ -1,5 +1,7 @@
-import { Home, QrCode } from "lucide-react"
-import Link from "next/link"
+"use client";
+
+import { Home, QrCode } from "lucide-react";
+import Link from "next/link";
 
 import {
   Sidebar,
@@ -10,7 +12,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+  useSidebar,
+} from "@/components/ui/sidebar";
 
 // Menu items.
 const items = [
@@ -39,9 +42,19 @@ const items = [
   //   url: "#",
   //   icon: Settings,
   // },
-]
+];
 
 export function AppSidebar() {
+  const { setOpen, setOpenMobile, isMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    } else {
+      setOpen(false);
+    }
+  };
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -52,7 +65,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url}>
+                    <Link href={item.url} onClick={handleLinkClick}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -64,5 +77,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
