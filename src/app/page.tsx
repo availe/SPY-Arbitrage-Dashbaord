@@ -1,7 +1,5 @@
-// import Image from "next/image";
+import Welcome from '@/../markdown/home.mdx';
 
-export default function Home() {
-  return (
-    <div>Hello</div>
-  );
+export default function Page() {
+  return <Welcome />;
 }
