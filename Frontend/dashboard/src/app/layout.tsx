@@ -32,7 +32,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
       >
         <SidebarProvider defaultOpen={defaultOpen}>
           <AppSidebar />
-          <main>
+          <main className="w-full">
             <SidebarTrigger />
             <BreadcrumbResponsive />
             {children}
