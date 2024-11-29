@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
+import { PanelLeftOpenIcon } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -35,7 +35,7 @@ type SidebarContext = {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggleSidebar: () => void;
-  size: "sm" | "default" | "lg"; // Added size here
+  size: "sm" | "default" | "lg";
 };
 
 const SidebarContext = React.createContext<SidebarContext | null>(null);
@@ -55,7 +55,7 @@ const SidebarProvider = React.forwardRef<
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    size?: "sm" | "default" | "lg"; // Added size prop here
+    size?: "sm" | "default" | "lg";
   }
 >(
   (
@@ -63,7 +63,7 @@ const SidebarProvider = React.forwardRef<
       defaultOpen = true,
       open: openProp,
       onOpenChange: setOpenProp,
-      size = "default", // Default size
+      size = "default",
       className,
       style,
       children,
@@ -127,7 +127,7 @@ const SidebarProvider = React.forwardRef<
         openMobile,
         setOpenMobile,
         toggleSidebar,
-        size, // Include size in context
+        size,
       }),
       [
         state,
@@ -277,28 +277,22 @@ Sidebar.displayName = "Sidebar";
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
->(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar, size } = useSidebar();
-
-  const sizeClass =
-    size === "sm" ? "h-6 w-6" : size === "lg" ? "h-8 w-8" : "h-7 w-7";
-  const iconSizeClass =
-    size === "sm" ? "w-3 h-3" : size === "lg" ? "w-5 h-5" : "w-4 h-4";
+>(({ onClick, ...props }, ref) => {
+  const { toggleSidebar } = useSidebar();
 
   return (
     <Button
       ref={ref}
       data-sidebar="trigger"
       variant="ghost"
-      size="icon"
-      className={cn(sizeClass, className)}
+      className="p-6"
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeft className={cn(iconSizeClass)} />
+      <PanelLeftOpenIcon style={{ width: '24px !important', height: '24px !important' }} />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
