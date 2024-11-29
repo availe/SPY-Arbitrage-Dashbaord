@@ -14,8 +14,10 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import Text from "@/../markdown/hmm.mdx";
-import marketStatesData from "@/data/market_states_data.json";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import linearData from "@/data/Market_States_Linear_Data.json";
+import logLinearData from "@/data/Market_States_Log_Linear_Data.json";
+import logLogData from "@/data/Market_States_Log_Log_Data.json";
 
 // Colors for market regimes
 const stateColors: { [key: number]: string } = {
@@ -41,7 +43,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 // Map data to separate fields for each market state
-const chartData = marketStatesData.map((dataPoint) => ({
+const chartData = logLogData.map((dataPoint) => ({
   date: dataPoint.Date_str,
   Hidden_State: dataPoint.Hidden_State,
   [`SPY_Close_${dataPoint.Hidden_State}`]: dataPoint.SPY_Close,
