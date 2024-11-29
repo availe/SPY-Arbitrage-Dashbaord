@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart2, BookOpen, GitBranch, Home, QrCode, RotateCw } from "lucide-react";
+import { BarChart2, BookOpen, FileText, GitBranch, QrCode, RotateCw, Users } from "lucide-react";
 
 import {
   Sidebar,
@@ -15,9 +15,9 @@ import { NavSection } from "./nav-section";
 const data = {
   navMain: [
     {
-      name: "Home",
+      name: "Introduction",
       url: "/",
-      icon: Home,
+      icon: FileText,
       isActive: true,
     },
     {
@@ -49,7 +49,7 @@ const data = {
     {
       name: "About Us",
       url: "/about",
-      icon: Home,
+      icon: Users,
     },
     {
       name: "QR Code",
