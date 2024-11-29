@@ -1,6 +1,8 @@
+import ReactMarkdown from "react-markdown";
+
 interface TableProps {
   headers: string[];
-  data: { [key: string]: any }[];
+  data: { [key: string]: string }[];
 }
 
 const FlexTable: React.FC<TableProps> = ({ headers, data }) => {
@@ -29,7 +31,7 @@ const FlexTable: React.FC<TableProps> = ({ headers, data }) => {
                 key={header}
                 className="flex-1 px-4 py-2 text-sm text-gray-700 break-words"
               >
-                {row[header]}
+                <ReactMarkdown>{row[header]}</ReactMarkdown>
               </div>
             ))}
           </div>
