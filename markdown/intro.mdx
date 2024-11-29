@@ -1,39 +1,60 @@
+import FlexTable from '@/components/flex-table.tsx';
+
 # Introduction
 
 Welcome to our project, where we delve into the dynamic world of financial markets through the lens of **quantitative modeling**. Our primary goal is to **predict market regimes**—specifically **bullish**, **bearish**, and **sideways** trends—by leveraging advanced statistical techniques.
 
 By accurately identifying these market conditions, we aim to develop a backtesting model for the **SPY ETF** (which tracks the S&P 500 index) that can potentially **outperform the market based on historical data**.
 
-## Our Approach
+## Approach and Goals
 
-1. **Collecting and Cleaning Financial Data**  
-   Ensuring data accuracy by sourcing reliable financial data and preprocessing it to eliminate inconsistencies.
-
-2. **Generating Additional Features**  
-   Creating new variables and indicators that provide deeper insights into asset behavior.
-
-3. **Building a Predictive Model using Hidden Markov Model (HMM)**  
-   Utilizing HMM to determine market regimes based on observed data.
-
-4. **Training the Model to Forecast Daily Returns**  
-   Applying statistical techniques to train the model with historical data.
-
-5. **Backtesting Our Strategy**  
-   Simulating the model's performance using historical data to evaluate its effectiveness.
-
-6. **Comparing Performance to Benchmarks**  
-   Assessing the model's returns against standard benchmarks like the SPY ETF.
-
-## Project Goals
-
-- **Demonstrate the Application of Quantitative Methods**  
-  Show how mathematical models can enhance trading strategies.
-
-- **Make Informed Investment Decisions**  
-  Use predictive modeling to anticipate market movements.
-
-- **Enhance Trading Strategies**  
-  Develop a model that adjusts to different market regimes for optimal performance.
-
----
-
+<FlexTable
+  headers={['Step/Goal', 'Description']}
+  data={[
+    {
+      'Step/Goal': '📊 **Data Collection and Cleaning**',
+      Description:
+        'Source reliable financial data and preprocess it to eliminate inconsistencies, ensuring the accuracy of inputs for modeling.',
+    },
+    {
+      'Step/Goal': '🧮 **Feature Engineering**',
+      Description:
+        'Generate new variables and indicators to provide deeper insights into market behavior and asset characteristics.',
+    },
+    {
+      'Step/Goal': '🤖 **Predictive Modeling with HMM**',
+      Description:
+        'Utilize Hidden Markov Models to identify market regimes (bullish, bearish, sideways) and predict market trends.',
+    },
+    {
+      'Step/Goal': '🎯 **Model Training and Forecasting**',
+      Description:
+        'Train the model using historical data to forecast daily returns and refine predictions over time.',
+    },
+    {
+      'Step/Goal': '⏳ **Backtesting the Strategy**',
+      Description:
+        'Simulate the model\'s performance using historical data to evaluate effectiveness and optimize parameters.',
+    },
+    {
+      'Step/Goal': '📈 **Benchmarking Against SPY ETF**',
+      Description:
+        'Compare the model\'s returns to standard benchmarks, demonstrating its potential to enhance trading strategies.',
+    },
+    {
+      'Step/Goal': '🎯 **Demonstrate Quantitative Methods**',
+      Description:
+        'Highlight how mathematical modeling can provide actionable insights and outperform traditional strategies.',
+    },
+    {
+      'Step/Goal': '💡 **Informed Investment Decisions**',
+      Description:
+        'Leverage predictive models to anticipate market movements and adjust strategies dynamically.',
+    },
+    {
+      'Step/Goal': '🚀 **Optimize Trading Strategies**',
+      Description:
+        'Develop a robust system that adjusts to different market regimes for consistent and optimized performance.',
+    },
+  ]}
+/>
