@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/chart";
 import Text from "@/../markdown/hmm.mdx";
 import marketStatesData from "@/data/market_states_data.json";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 // Colors for market regimes
 const stateColors: { [key: number]: string } = {
@@ -47,6 +48,7 @@ const chartData = marketStatesData.map((dataPoint) => ({
 }));
 
 export default function Page() {
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
   return (
     <>
       <ChartContainer className="min-h-[300px] w-full" config={chartConfig}>
@@ -79,7 +81,12 @@ export default function Page() {
             />
           ))}
 
-          <Brush dataKey="date" height={30} stroke="#8884d8" />
+          <Brush
+            dataKey="date"
+            height={30}
+            stroke="#8884d8"
+            travellerWidth={isSmallScreen ? 18 : 12}
+          />
         </LineChart>
       </ChartContainer>
       <Text />
