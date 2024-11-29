@@ -5,7 +5,7 @@ import { QRCodeCanvas } from "qrcode.react";
 
 const SharePage: React.FC = () => {
   const url =
-    "https://spy-arbitrage-dashboard-xe57t1ng9-availes-projects.vercel.app";
+    "https://spy-arbitrage-dashboard.vercel.app";
   const [qrSize, setQrSize] = useState(window.innerWidth < 640 ? 200 : 400);
 
   useEffect(() => {
