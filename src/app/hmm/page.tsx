@@ -12,11 +12,9 @@ export default function Page() {
   ];
 
   return (
-    <>
-      <div className="p-4">
-        <MarketStatesChart dataSets={dataSets} />
-      </div>
+    <div className="flex flex-col">
+      <MarketStatesChart dataSets={dataSets} />
       <Text />
-    </>
+    </div>
   );
 }
