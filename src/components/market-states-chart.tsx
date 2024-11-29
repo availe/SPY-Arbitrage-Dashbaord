@@ -8,6 +8,7 @@ import {
   Line,
   CartesianGrid,
   XAxis,
+  YAxis,
   Tooltip,
   Brush,
 } from "recharts";
@@ -129,13 +130,20 @@ export default function MarketStatesChart({
             axisLine={false}
             tickFormatter={(value: string) => value.slice(0, 7)} // Format date (e.g., "2023-11")
           />
+          {/* Dynamic codomain with some padding */}
+          <YAxis
+            domain={[
+              (dataMin: number) => dataMin * 0.95,
+              (dataMax: number) => dataMax * 1.05,
+            ]}
+          />
           <Tooltip content={<ChartTooltipContent />} />
 
           {/* Render lines for each Hidden_State */}
           {[0, 1, 2].map((state) => (
             <Line
               key={`line-SPY_Close_${state}`} // Unique key for each Line
-              type="monotone"
+              type="linear"
               dataKey={`SPY_Close_${state}`}
               stroke={stateColors[state]}
               dot={false}

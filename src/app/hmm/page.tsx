@@ -7,8 +7,8 @@ import Text from "@/../markdown/hmm.mdx";
 
 export default function Page() {
   const dataSets = [
-    { label: "Linear", data: linearData },
     { label: "Log-Linear", data: logLinearData },
+    { label: "Linear", data: linearData },
   ];
 
   return (
