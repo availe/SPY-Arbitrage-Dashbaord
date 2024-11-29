@@ -1,26 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { QRCodeCanvas } from "qrcode.react";
 
 const SharePage: React.FC = () => {
-  const url =
-    "https://spy-arbitrage-dashboard.vercel.app";
-  const [qrSize, setQrSize] = useState(window.innerWidth < 640 ? 200 : 400);
-
-  useEffect(() => {
-    const updateQrSize = () => {
-      setQrSize(window.innerWidth < 640 ? 200 : 400);
-    };
-
-    window.addEventListener("resize", updateQrSize);
-
-    updateQrSize();
-
-    return () => {
-      window.removeEventListener("resize", updateQrSize);
-    };
-  }, []);
+  const url = "https://spy-arbitrage-dashboard.vercel.app";
+  const isSmallScreen = useMediaQuery("(max-width: 639px)");
+  const qrSize = isSmallScreen ? 200 : 400;
 
   return (
     <div className="flex flex-col h-[85vh] items-center justify-center gap-4">

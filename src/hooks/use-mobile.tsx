@@ -1,3 +1,7 @@
+/** 
+ * @deprecated Use `useMediaQuery` in future implementations to avoid hardcoded breakpoints.
+ */
+
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
