@@ -1,5 +1,5 @@
-import Welcome from '@/../markdown/home.mdx';
+import Text from '@/../markdown/intro.mdx';
 
 export default function Page() {
-  return <Welcome />;
+  return <Text />;
 }

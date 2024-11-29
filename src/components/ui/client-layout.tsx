@@ -22,9 +22,13 @@ export default function ClientLayout({
       size={isMobile ? "lg" : "default"}
     >
       <AppSidebar />
-      <main className="w-full">
-        <SidebarTrigger />
-        <BreadcrumbResponsive />
+      <main className="w-full flex flex-col">
+        <div className="flex md:flex-col">
+          <div>
+            <SidebarTrigger />
+          </div>
+          <BreadcrumbResponsive />
+        </div>
         <MdxLayout>{children}</MdxLayout>
       </main>
     </SidebarProvider>
