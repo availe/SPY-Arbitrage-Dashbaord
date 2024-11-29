@@ -1,38 +1,42 @@
 interface TableProps {
   headers: string[];
-  data: { [key: string]: React.ReactNode }[];
+  data: { [key: string]: any }[];
 }
 
-const Table: React.FC<TableProps> = ({ headers, data }) => {
+const FlexTable: React.FC<TableProps> = ({ headers, data }) => {
   return (
-    <div className="overflow-x-auto my-8">
-      <table className="min-w-full border-collapse">
-        <thead>
-          <tr>
+    <div className="flex flex-col my-8 w-full">
+      {/* Table Header */}
+      <div className="flex w-full bg-[#F6F8FA] text-left text-sm font-medium text-gray-600 uppercase tracking-wider border-b border-gray-200">
+        {headers.map((header) => (
+          <div key={header} className="flex-1 px-4 py-2">
+            {header}
+          </div>
+        ))}
+      </div>
+
+      {/* Table Rows */}
+      <div className="flex flex-col bg-white">
+        {data.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className={`flex w-full border-b last:border-b-0 hover:bg-[#F6F8FA] ${
+              rowIndex % 2 === 1 ? "bg-[#F6F8FA]" : ""
+            }`}
+          >
             {headers.map((header) => (
-              <th
+              <div
                 key={header}
-                className="px-4 py-2 border-b-2 border-gray-200 bg-gray-50 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+                className="flex-1 px-4 py-2 text-sm text-gray-700 break-words"
               >
-                {header}
-              </th>
+                {row[header]}
+              </div>
             ))}
-          </tr>
-        </thead>
-        <tbody className="bg-white">
-          {data.map((row, idx) => (
-            <tr key={idx} className="border-b last:border-b-0 hover:bg-gray-50">
-              {headers.map((header) => (
-                <td key={header} className="px-4 py-2 text-sm text-gray-700">
-                  <div className="whitespace-normal">{row[header]}</div>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default Table;
+export default FlexTable;
