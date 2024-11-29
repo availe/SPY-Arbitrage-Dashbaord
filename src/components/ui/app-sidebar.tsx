@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, QrCode } from "lucide-react";
+import { BarChart2, BookOpen, GitBranch, Home, QrCode, RotateCw } from "lucide-react";
 
 import {
   Sidebar,
@@ -18,6 +18,30 @@ const data = {
       name: "Home",
       url: "/",
       icon: Home,
+      isActive: true,
+    },
+    {
+      name: "Primer",
+      url: "/primer",
+      icon: BookOpen,
+      isActive: true,
+    },
+    {
+      name: "HMM Model",
+      url: "/hmm",
+      icon: BarChart2,
+      isActive: true,
+    },
+    {
+      name: "Tree Model",
+      url: "/tree",
+      icon: GitBranch,
+      isActive: true,
+    },
+    {
+      name: "Backtest",
+      url: "/backtest",
+      icon: RotateCw,
       isActive: true,
     },
   ],
