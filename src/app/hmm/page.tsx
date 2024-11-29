@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col">
-      <MarketStatesChart dataSets={dataSets} />
+      <MarketStatesChart dataSets={dataSets} height={500} title="Market Regimes Chart" />
       <Text />
     </div>
   );
