@@ -1,6 +1,13 @@
 "use client";
 
-import { LineChart, Line, CartesianGrid, XAxis, Tooltip } from "recharts";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  Tooltip,
+  Brush,
+} from "recharts";
 import {
   ChartContainer,
   ChartTooltipContent,
@@ -11,9 +18,9 @@ import marketStatesData from "@/data/market_states_data.json";
 
 // Colors for market regimes
 const stateColors: { [key: number]: string } = {
-  0: "green",   // Bullish
-  1: "red",     // Bearish
-  2: "yellow",  // Sideways
+  0: "green", // Bullish
+  1: "red", // Bearish
+  2: "yellow", // Sideways
 };
 
 // Chart configuration for labels and colors
@@ -71,6 +78,8 @@ export default function Page() {
               connectNulls={false} // Don't connect gaps
             />
           ))}
+
+          <Brush dataKey="date" height={30} stroke="#8884d8" />
         </LineChart>
       </ChartContainer>
       <Text />
