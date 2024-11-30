@@ -104,7 +104,7 @@ export default function MarketStatesChart({
           value={selectedDataSetLabel}
           onValueChange={(value) => setSelectedDataSetLabel(value)}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full md:w-[180px]">
             <SelectValue placeholder="Select Chart Scale" />
           </SelectTrigger>
           <SelectContent>
