@@ -124,7 +124,7 @@ export default function MarketStatesChart({
           <Button
             variant="ghost"
             onClick={toggleFullScreen}
-            className="px-4 py-2"
+            className="px-4 py-2 hidden md:block"
           >
             {isFullScreen ? "Exit Full Screen" : "Full Screen"}
           </Button>
