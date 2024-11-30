@@ -98,37 +98,34 @@ export default function MarketStatesChart({
 
   return (
     <>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">{title}</h2>
+      <h3 className="text-center text-lg font-semibold mb-4">{title}</h3>
+      <div style={{ display: "flex", justifyContent: "end", gap: 10, paddingBottom: 10 }}>
+        <Select
+          value={selectedDataSetLabel}
+          onValueChange={(value) => setSelectedDataSetLabel(value)}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Chart Scale" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Chart Scale</SelectLabel>
+              {dataSets.map((ds) => (
+                <SelectItem key={ds.label} value={ds.label}>
+                  {ds.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
 
-        <div className="flex items-center">
-          <Select
-            value={selectedDataSetLabel}
-            onValueChange={(value) => setSelectedDataSetLabel(value)}
-          >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select Chart Scale" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Chart Scale</SelectLabel>
-                {dataSets.map((ds) => (
-                  <SelectItem key={ds.label} value={ds.label}>
-                    {ds.label}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-
-          <Button
-            variant="ghost"
-            onClick={toggleFullScreen}
-            className="px-4 py-2 hidden md:block"
-          >
-            {isFullScreen ? "Exit Full Screen" : "Full Screen"}
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={toggleFullScreen}
+          className="px-4 py-2 hidden md:block"
+        >
+          {isFullScreen ? "Exit Full Screen" : "Full Screen"}
+        </Button>
       </div>
 
       <div ref={chartContainerRef}>
@@ -141,7 +138,6 @@ export default function MarketStatesChart({
             data={chartData}
             width={isFullScreen ? window.innerWidth : 1000}
             height={isFullScreen ? window.innerHeight - 100 : height}
-            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -170,6 +166,7 @@ export default function MarketStatesChart({
             <Tooltip content={<ChartTooltipContent />} />
             <Legend
               verticalAlign="top"
+              align={isFullScreen ? "center" : "right"}
               height={36}
               payload={Object.values(Config).map(({ label, color }) => ({
                 value: label,
