@@ -1,8 +1,8 @@
 import { Line, LegendType } from "recharts";
 
 export const BacktestConfig = {
-  trading: { id: 0, label: "Trading Account", color: "blue" },
-  holding: { id: 1, label: "Holding Account", color: "orange" },
+  trading: { id: 0, label: "Trading Account", color: "#00BFFF" },
+  holding: { id: 1, label: "Holding Account", color: "#FF8C00" },
 };
 
 export const generateBacktestLegend = () =>
