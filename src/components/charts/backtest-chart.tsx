@@ -135,7 +135,7 @@ export default function BacktestChart({
                 (dataMin: number) => dataMin * 0.95,
                 (dataMax: number) => dataMax * 1.05,
               ]}
-              tickFormatter={(value: number) => value.toExponential(2)}
+              tickFormatter={(value: number) => value.toFixed(2)}
             >
               <Label
                 value="Account Value ($)"
