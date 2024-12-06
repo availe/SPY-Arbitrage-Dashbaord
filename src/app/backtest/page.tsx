@@ -1,11 +1,19 @@
-import React from 'react';
+"use client";
+
+import MarketStatesChart from "@/components/charts/backtest-chart";
+import linearData from "@/data/Backtest_Linear_Data.json";
+import logLinearData from "@/data/Backtest_Log_Linear_Data.json";
 
 const BacktestPage: React.FC = () => {
+    const dataSets = [
+        { label: "Log-Linear", data: logLinearData },
+        { label: "Linear", data: linearData },
+      ];
+
     return (
-        <div>
-            <h1>Backend Page</h1>
-            <p>Welcome to the backend page of the SPY Arbitrage Dashboard.</p>
-        </div>
+        <div className="flex flex-col">
+        <MarketStatesChart dataSets={dataSets} height={500} title="Backtest Chart" />
+      </div>
     );
 };
 
