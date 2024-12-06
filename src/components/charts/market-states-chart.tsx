@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   LineChart,
-  Line,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -22,6 +21,11 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useFullscreen } from "@/hooks/use-fullscreen";
+import {
+  generateMarketStatesLegend,
+  generateMarketStatesLines,
+  MarketStatesConfig,
+} from "@/configs/market-states-config";
 
 type DataPoint = {
   Date_str: string;
@@ -32,12 +36,6 @@ type DataPoint = {
 type DataSet = {
   label: string;
   data: DataPoint[];
-};
-
-const Config = {
-  bullish: { id: 0, label: "Bullish", color: "green" },
-  bearish: { id: 1, label: "Bearish", color: "red" },
-  sideways: { id: 2, label: "Sideways", color: "#FFC107" }, // Yellow
 };
 
 const processChartData = (data: DataPoint[]) =>
@@ -106,7 +104,7 @@ export default function MarketStatesChart({
 
       <div ref={elementRef}>
         <ChartContainer
-          config={Config}
+          config={MarketStatesConfig}
           style={{ height: isFullscreen ? "100vh" : `${height}px` }}
           className="w-full"
         >
@@ -144,31 +142,16 @@ export default function MarketStatesChart({
               verticalAlign="top"
               align={isFullscreen ? "center" : "right"}
               height={36}
-              payload={Object.values(Config).map(({ label, color }) => ({
-                value: label,
-                type: "line",
-                color,
-              }))}
+              payload={generateMarketStatesLegend()}
             />
-            {Object.values(Config).map(({ id, label, color }) => (
-              <Line
-                key={`line-SPY_Close_${id}`}
-                type="linear"
-                dataKey={`SPY_Close_${id}`}
-                stroke={color}
-                dot={false}
-                isAnimationActive={false}
-                connectNulls={false}
-                name={label}
-              />
-            ))}
+            {generateMarketStatesLines()}
             <Brush
               dataKey="date"
               height={30}
               travellerWidth={12}
               strokeWidth={1}
-              stroke={isFullscreen ? "#ffffff" : "#8e91dc"} // White in full-screen, purple otherwise
-              fill={isFullscreen ? "#222222" : "#fbfaff"} // Dark gray in full-screen, light purple otherwise
+              stroke={isFullscreen ? "#ffffff" : "#8e91dc"}
+              fill={isFullscreen ? "#222222" : "#fbfaff"}
             />
           </LineChart>
         </ChartContainer>
