@@ -15,34 +15,19 @@ import { NavSection } from "./nav-section";
 const data = {
   navMain: [
     {
-      name: "Introduction",
-      url: "/",
-      icon: FileText,
-      isActive: true,
-    },
-    {
-      name: "Primer",
-      url: "/primer",
-      icon: BookOpen,
-      isActive: true,
-    },
-    {
       name: "HMM Model",
-      url: "/hmm",
+      url: "/",
       icon: BarChart2,
-      isActive: true,
     },
     {
       name: "Tree Model",
       url: "/tree",
       icon: GitBranch,
-      isActive: true,
     },
     {
       name: "Backtest",
       url: "/backtest",
       icon: RotateCw,
-      isActive: true,
     },
   ],
   navOther: [
@@ -50,6 +35,16 @@ const data = {
       name: "About Us",
       url: "/about",
       icon: Users,
+    },
+    {
+      name: "Overview",
+      url: "/overview",
+      icon: FileText,
+    },
+    {
+      name: "Extra Info",
+      url: "/primer",
+      icon: BookOpen,
     },
     {
       name: "QR Code",
