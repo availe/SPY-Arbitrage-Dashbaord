@@ -23,21 +23,6 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Elhaam Bhuiyan",
-    major: "Financial Mathematics Major",
-    graduation: "May 2025",
-    university: "Baruch College",
-    linkedIn: "https://www.linkedin.com/in/elo2718/",
-    github: "https://github.com/Elo2718",
-    skills: "Data Science",
-    technologies: "Pandas",
-    projects: [
-      { name: "Project A", description: "Sample Text." },
-      { name: "Project B", description: "Sample Text." },
-    ],
-    funFact: "Sample Text",
-  },
-  {
     name: "Rafael Diaz",
     major: "Computer Science Major",
     graduation: "December 2024",
@@ -50,6 +35,21 @@ const teamMembers: TeamMember[] = [
     projects: [
       { name: "Project A", description: "Sample Text" },
       { name: "Project B", description: "Sample Text" },
+    ],
+    funFact: "Sample Text",
+  },
+  {
+    name: "Elhaam Bhuiyan",
+    major: "Financial Mathematics Major",
+    graduation: "May 2025",
+    university: "Baruch College",
+    linkedIn: "https://www.linkedin.com/in/elo2718/",
+    github: "https://github.com/Elo2718",
+    skills: "Data Science",
+    technologies: "Pandas",
+    projects: [
+      { name: "Project A", description: "Sample Text." },
+      { name: "Project B", description: "Sample Text." },
     ],
     funFact: "Sample Text",
   },
@@ -74,7 +74,7 @@ const shortenUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 px-6 py-8">
+    <div className="min-h-screen px-6 py-8">
       <h1 className="mb-8 text-center text-4xl font-bold text-gray-800">Meet The Team</h1>
       <p className="mx-auto mb-10 max-w-2xl text-center text-gray-600">
         We’re a team of passionate students bringing innovative ideas to life. Get to know the minds behind our projects.
