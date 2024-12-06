@@ -2,7 +2,7 @@
 
 import linearData from "@/data/Market_States_Linear_Data.json";
 import logLinearData from "@/data/Market_States_Log_Linear_Data.json";
-import MarketStatesChart from "@/components/market-states-chart";
+import MarketStatesChart from "@/components/charts/market-states-chart";
 import Text from "@/../markdown/hmm.mdx";
 
 export default function Page() {
