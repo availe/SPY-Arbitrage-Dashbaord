@@ -23,21 +23,6 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Elhaam Bhuiyan",
-    major: "Financial Mathematics Major",
-    graduation: "May 2025",
-    university: "Baruch College",
-    linkedIn: "https://www.linkedin.com/in/elo2718/",
-    github: "https://github.com/Elo2718",
-    skills: "Data Science",
-    technologies: "Pandas",
-    projects: [
-      { name: "Project A", description: "Sample Text." },
-      { name: "Project B", description: "Sample Text." },
-    ],
-    funFact: "Sample Text",
-  },
-  {
     name: "Rafael Diaz",
     major: "Computer Science Major",
     graduation: "December 2024",
@@ -50,6 +35,21 @@ const teamMembers: TeamMember[] = [
     projects: [
       { name: "Project A", description: "Sample Text" },
       { name: "Project B", description: "Sample Text" },
+    ],
+    funFact: "Sample Text",
+  },
+  {
+    name: "Elhaam Bhuiyan",
+    major: "Financial Mathematics Major",
+    graduation: "May 2025",
+    university: "Baruch College",
+    linkedIn: "https://www.linkedin.com/in/elo2718/",
+    github: "https://github.com/Elo2718",
+    skills: "Data Science",
+    technologies: "Pandas",
+    projects: [
+      { name: "Project A", description: "Sample Text." },
+      { name: "Project B", description: "Sample Text." },
     ],
     funFact: "Sample Text",
   },
