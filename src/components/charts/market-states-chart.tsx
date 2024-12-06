@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -23,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { useFullscreen } from "@/hooks/use-fullscreen";
 
 type DataPoint = {
   Date_str: string;
@@ -63,30 +62,7 @@ export default function MarketStatesChart({
     dataSets[0]?.label || ""
   );
 
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const chartContainerRef = useRef<HTMLDivElement>(null);
-
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-      chartContainerRef.current?.requestFullscreen();
-      setIsFullScreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullScreen(false);
-    }
-  };
-
-  useEffect(() => {
-    const handleFullScreenChange = () => {
-      if (!document.fullscreenElement) {
-        setIsFullScreen(false);
-      }
-    };
-    document.addEventListener("fullscreenchange", handleFullScreenChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", handleFullScreenChange);
-    };
-  }, []);
+  const { elementRef, isFullscreen, toggleFullscreen } = useFullscreen();
 
   const selectedDataSet = dataSets.find(
     (ds) => ds.label === selectedDataSetLabel
@@ -121,23 +97,23 @@ export default function MarketStatesChart({
 
         <Button
           variant="ghost"
-          onClick={toggleFullScreen}
+          onClick={toggleFullscreen}
           className="px-4 py-2 hidden md:block"
         >
-          {isFullScreen ? "Exit Full Screen" : "Full Screen"}
+          {isFullscreen ? "Exit Full Screen" : "Full Screen"}
         </Button>
       </div>
 
-      <div ref={chartContainerRef}>
+      <div ref={elementRef}>
         <ChartContainer
           config={Config}
-          style={{ height: isFullScreen ? "100vh" : `${height}px` }}
+          style={{ height: isFullscreen ? "100vh" : `${height}px` }}
           className="w-full"
         >
           <LineChart
             data={chartData}
-            width={isFullScreen ? window.innerWidth : 1000}
-            height={isFullScreen ? window.innerHeight - 100 : height}
+            width={isFullscreen ? window.innerWidth : 1000}
+            height={isFullscreen ? window.innerHeight - 100 : height}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -166,7 +142,7 @@ export default function MarketStatesChart({
             <Tooltip content={<ChartTooltipContent />} />
             <Legend
               verticalAlign="top"
-              align={isFullScreen ? "center" : "right"}
+              align={isFullscreen ? "center" : "right"}
               height={36}
               payload={Object.values(Config).map(({ label, color }) => ({
                 value: label,
@@ -191,8 +167,8 @@ export default function MarketStatesChart({
               height={30}
               travellerWidth={12}
               strokeWidth={1}
-              stroke={isFullScreen ? "#ffffff" : "#8e91dc"} // White in full-screen, purple otherwise
-              fill={isFullScreen ? "#222222" : "#fbfaff"} // Dark gray in full-screen, light purple otherwise
+              stroke={isFullscreen ? "#ffffff" : "#8e91dc"} // White in full-screen, purple otherwise
+              fill={isFullscreen ? "#222222" : "#fbfaff"} // Dark gray in full-screen, light purple otherwise
             />
           </LineChart>
         </ChartContainer>
