@@ -13,8 +13,6 @@
   margin: 0 auto;
 }
 
-/* Media Queries for Page Margin */
-
 /* Extra large screens (1200px and up) */
 @media (min-width: 1200px) {
   .markdown-body {
@@ -32,23 +30,24 @@
 /* Medium screens (768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
   .markdown-body {
-    margin: 0 60px;
+    margin: 10px 60px;
   }
 }
 
 /* Small screens (576px and up) */
 @media (min-width: 576px) and (max-width: 767px) {
   .markdown-body {
-    margin: 0 40px;
+    margin: 10px 40px; /* Add more vertical margin for spacing */
   }
 }
 
 /* Extra small screens (less than 576px) */
 @media (max-width: 575px) {
   .markdown-body {
-    margin: 0 20px;
+    margin: 10px 20px; /* Increase vertical margin for better spacing */
   }
 }
+
 
 .markdown-body .octicon {
   display: inline-block;
