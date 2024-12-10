@@ -23,11 +23,9 @@ export default function ClientLayout({
     >
       <AppSidebar />
       <main className="w-full flex flex-col">
-        <div className="flex md:flex-col">
-          <div>
+        <div className="flex items-center">
             <SidebarTrigger />
-          </div>
-          <BreadcrumbResponsive />
+            <BreadcrumbResponsive />
         </div>
         <MdxLayout>{children}</MdxLayout>
       </main>
