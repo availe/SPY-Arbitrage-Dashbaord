@@ -31,6 +31,7 @@ type DataPoint = {
   Date_str: string;
   Hidden_State: number;
   SPY_Close: number;
+  SPY_Close_Linear: number;
 };
 
 type DataSet = {
@@ -43,7 +44,25 @@ const processChartData = (data: DataPoint[]) =>
     date: dataPoint.Date_str,
     Hidden_State: dataPoint.Hidden_State,
     [`SPY_Close_${dataPoint.Hidden_State}`]: dataPoint.SPY_Close,
+    ...(dataPoint.SPY_Close_Linear !== undefined
+      ? { SPY_Close_Linear: dataPoint.SPY_Close_Linear }
+      : {}),
   }));
+
+function LinearTooltipContent(
+  props: React.ComponentProps<typeof ChartTooltipContent>
+) {
+  const { payload } = props;
+  if (!payload || !payload.length) return null;
+  const newPayload = payload.map((item) => {
+    if (item && item.payload && item.payload.SPY_Close_Linear !== undefined) {
+      const linearVal = Number(item.payload.SPY_Close_Linear);
+      return { ...item, value: linearVal };
+    }
+    return item;
+  });
+  return <ChartTooltipContent {...props} payload={newPayload} />;
+}
 
 type MarketStatesChartProps = {
   dataSets: DataSet[];
@@ -73,7 +92,14 @@ export default function MarketStatesChart({
   return (
     <>
       <h3 className="text-center text-lg font-semibold mb-4">{title}</h3>
-      <div style={{ display: "flex", justifyContent: "end", gap: 10, paddingBottom: 10 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          gap: 10,
+          paddingBottom: 10,
+        }}
+      >
         <Select
           value={selectedDataSetLabel}
           onValueChange={(value) => setSelectedDataSetLabel(value)}
@@ -137,7 +163,7 @@ export default function MarketStatesChart({
                 style={{ textAnchor: "middle" }}
               />
             </YAxis>
-            <Tooltip content={<ChartTooltipContent />} />
+            <Tooltip content={<LinearTooltipContent />} />
             <Legend
               verticalAlign="top"
               align={isFullscreen ? "center" : "right"}
