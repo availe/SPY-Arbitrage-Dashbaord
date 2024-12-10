@@ -31,6 +31,8 @@ type DataPoint = {
   Date_str: string;
   Trading_Account_Close: number;
   Holding_Account: number;
+  Trading_Account_Close_Linear?: number;
+  Holding_Account_Linear?: number;
 };
 
 type DataSet = {
@@ -43,7 +45,34 @@ const processBacktestData = (data: DataPoint[]) =>
     date: dp.Date_str,
     Trading_Account_Close: dp.Trading_Account_Close,
     Holding_Account: dp.Holding_Account,
+    Trading_Account_Close_Linear: dp.Trading_Account_Close_Linear,
+    Holding_Account_Linear: dp.Holding_Account_Linear,
   }));
+
+function BacktestLinearTooltipContent(
+  props: React.ComponentProps<typeof ChartTooltipContent>
+) {
+  const { payload } = props;
+  if (!payload || !payload.length) return null;
+
+  const newPayload = payload.map((item) => {
+    if (item.dataKey === "Trading_Account_Close") {
+      return {
+        ...item,
+        value: Number(item.payload.Trading_Account_Close_Linear).toFixed(2),
+      };
+    }
+    if (item.dataKey === "Holding_Account") {
+      return {
+        ...item,
+        value: Number(item.payload.Holding_Account_Linear).toFixed(2),
+      };
+    }
+    return item;
+  });
+
+  return <ChartTooltipContent {...props} payload={newPayload} />;
+}
 
 type BacktestChartProps = {
   dataSets: DataSet[];
@@ -65,7 +94,6 @@ export default function BacktestChart({
   const selectedDataSet = dataSets.find(
     (ds) => ds.label === selectedDataSetLabel
   );
-
   const chartData = processBacktestData(
     selectedDataSet ? selectedDataSet.data : []
   );
@@ -144,7 +172,7 @@ export default function BacktestChart({
                 style={{ textAnchor: "middle" }}
               />
             </YAxis>
-            <Tooltip content={<ChartTooltipContent />} />
+            <Tooltip content={<BacktestLinearTooltipContent />} />
             <Legend
               verticalAlign="top"
               align={isFullscreen ? "center" : "right"}
