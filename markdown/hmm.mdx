@@ -1,1 +1,50 @@
-# Hidden Markov Model (HMM): Predicting Market Regimes
+import FlexTable from '@/components/ui/flex-table.tsx';
+
+# Hidden Markov Model: Predicting Market Regimes
+
+Hidden Markov Models (HMMs) provide a framework for analyzing and predicting patterns in financial markets by uncovering hidden structures, such as market regimes.
+
+<div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px 0" }}>
+  <img src="/Markovkate_01.svg" alt="Markov Chain" style={{ maxWidth: "100%" }} />
+  <em>Figure 1: A Markov Chain illustrating state transitions.</em>
+</div>
+
+- **Markov Chains** describe systems where the future state depends only on the current state (the Markov property).
+- Used for modeling sequential processes, such as weather patterns or basic market trends.
+
+<div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px 0" }}>
+  <img src="/HiddenMarkovModel.svg" alt="Hidden Markov Model" style={{ maxWidth: "100%" }} />
+  <em>Figure 2: A Hidden Markov Model structure.</em>
+</div>
+
+- **HMMs** extend Markov Chains by introducing:
+  - **Hidden states**: Unobservable variables inferred from data.
+  - **Observations**: Outputs that provide indirect evidence of hidden states.
+- Particularly useful in finance for detecting market regimes like bull or bear markets.
+
+## Key Differences
+
+<FlexTable
+  headers={["Aspect", "Markov Chain", "Hidden Markov Model"]}
+  data={[
+    {
+      Aspect: "States",
+      "Markov Chain": "Fully observable",
+      "Hidden Markov Model": "Hidden, inferred from observations",
+    },
+    {
+      Aspect: "Complexity",
+      "Markov Chain": "Simpler, direct state transitions",
+      "Hidden Markov Model": "More complex, models hidden states and emissions",
+    },
+    {
+      Aspect: "Applications",
+      "Markov Chain": "Weather, queueing systems, simple market trends",
+      "Hidden Markov Model": "Market regime detection, speech recognition",
+    },
+  ]}
+/>
+
+## Practical Takeaway
+
+- **Market Regime Detection and Transitions**: HMMs identify market patterns (e.g., bull or bear regimes) and model transitions between them, offering insights for informed investment decisions.
