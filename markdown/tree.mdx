@@ -1,81 +1,13 @@
 # Gradient Boosted Trees for Predicting SPY
 
-The goal of using Gradient Boosted Trees (GBT) is to uncover hidden, non-linear relationships among multiple assets (e.g., other stocks, indices, or assets) to predict the movement of SPY (S&P 500 ETF). Here's how GBT works in this context:
-
-## Key Idea
-
-SPY's price movement is influenced by numerous factors, including the performance of related assets like other indices, sectors, or assets. GBT is designed to find complex patterns in the relationships among these assets and use them to predict SPY's direction or price.
+Gradient Boosted Trees (GBT) are designed to uncover hidden, non-linear relationships among multiple financial assets to predict SPY (S&P 500 ETF) movements.
 
 ## How It Works
 
-### Input Data:
+<div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px 0" }}>
+  <img src="/SPY_decision_tree.svg" alt="Decision Tree Example" style={{ maxWidth: "100%" }} />
+  <em>Figure 1: A decision tree predicting SPY movement based on prior day returns.</em>
+</div>
 
-- **Features**: Metrics from related assets (e.g., daily returns, moving averages, volatility).
-- **Target**: SPY's movement (binary: Up = 1, Down = 0) or SPY's next price.
-
-### Decision Trees as Base Models:
-
-Each decision tree splits the data based on relationships between the features and the target.
-
-**Example**:
-- If SPY return > 0.5% → SPY is likely to go **Up**.
-- If SPY return < -1% → SPY is likely to go **Down**.
-
-### Finding Nonlinear Patterns:
-
-GBT doesn’t assume any linear relationship. Instead, it uncovers patterns like:
-- "If SPY return > 0.5% AND VIX (volatility index) < 15, then SPY goes Up."
-
-Such non-linear rules are hard to capture with simpler models like linear regression.
-
-### Boosting for Refinement:
-
-Each tree improves on the previous ones by focusing on the mistakes:
-1. **Tree 1**: Learns basic patterns (e.g., Volatility and SPY movement).
-2. **Tree 2**: Learns more specific details.
-3. **Tree 3**: Adds even finer corrections, focusing on cases where Tree 2 was wrong.
-
-### Prediction:
-
-After training, the model combines all trees to make a final prediction for SPY based on the patterns it has learned from the input data.
-
-## Why GBT is Ideal for Predicting SPY with Multiple Assets:
-
-### Captures Complex Interactions:
-
-- GBT can model intricate dependencies among multiple assets and SPY.
-- **Example**: "SPY depends on Nasdaq, Dow Jones, and VIX together in a non-linear way."
-
-### Handles Feature Importance:
-
-- GBT automatically identifies which assets have the most influence on SPY, like Nasdaq being more predictive than a sector ETF.
-
-### Works with Noisy Data:
-
-- Financial market data often contains noise. GBT’s boosting mechanism is robust and can focus on the meaningful patterns.
-
-### Scales with Data:
-
-- GBT can handle a large number of features and find subtle patterns among them.
-
-## Example Analogy:
-
-Imagine trying to predict a student’s test score based on:
-- **Sleep hours (SPY Movement)**,
-- **Study time (Bond Prices)**,
-- **Mood (VIX index)**.
-
-Each alone might not give a full picture, but by combining them with non-linear rules, you get a clearer prediction.
-
-For SPY, GBT identifies these "hidden rules" among multiple assets and their interactions to provide accurate predictions.
-
-## Workflow in Practice:
-
-1. **Collect Data**: Gather historical data of SPY and related assets (returns, moving averages, volatility).
-2. **Train GBT Model**: Use the assets' features as inputs to predict SPY's movement or price.
-3. **Test Accuracy**: Evaluate the model's performance on unseen data to ensure it captures useful patterns.
-4. **Make Predictions**: Use the trained model to predict SPY's future movement, guiding trading decisions.
-
-## Conclusion
-
-GBT excels in this scenario by transforming complex data relationships into actionable insights!
+- **Decision trees** split data into branches based on specific rules, such as SPY’s prior day return.
+- Easy to interpret and effective for capturing simple patterns, but they struggle with complex relationships and generalization.
