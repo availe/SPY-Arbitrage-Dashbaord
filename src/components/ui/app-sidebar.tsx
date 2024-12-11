@@ -59,7 +59,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>SPY Arbitrage Project</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarContent>
               <NavSection projects={data.navMain} label="Project" />
