@@ -1,0 +1,34 @@
+import FlexTable from '@/components/ui/flex-table.tsx';
+
+# Backtest Results and Insights
+
+Our strategy combines daily predictions to go long or short on SPY, seeking to capitalize on both upward and downward movements.
+
+**Key Results**  
+- **CAPM Alpha (Trading Account):** 0.1951%  
+- **CAPM Beta (Trading Account):** 0.4815%
+
+Alpha suggests that the strategy delivered returns beyond what traditional market exposure would predict, while a beta below 1.0 indicates less sensitivity to overall market fluctuations.
+
+## Potential Enhancements
+
+<FlexTable
+  headers={["Aspect", "Current Approach", "Potential Enhancements"]}
+  data={[
+    {
+      Aspect: "Trading Constraints",
+      "Current Approach": "No explicit trading costs, borrow fees, or constraints for short positions",
+      "Potential Enhancements": "Reflect bid-ask spreads, short borrow costs, and borrowing availability"
+    },
+    {
+      Aspect: "Capital & Risk Management",
+      "Current Approach": "All capital deployed per trade with stop losses assumed to execute perfectly",
+      "Potential Enhancements": "Use partial allocations to manage risk and prepare for sudden market moves"
+    },
+    {
+      Aspect: "Market Conditions",
+      "Current Approach": "Assumes instant fills at the closing price without liquidity issues",
+      "Potential Enhancements": "Incorporate realistic order book depth, execution challenges, and partial fills"
+    }
+  ]}
+/>

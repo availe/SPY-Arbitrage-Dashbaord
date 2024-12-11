@@ -2,6 +2,7 @@
 
 import backtestData from "@/data/Backtest_Combined_Data.json";
 import BacktestChart from "@/components/charts/backtest-chart";
+import Text from "@/../markdown/backtest.mdx";
 
 const BacktestPage: React.FC = () => {
   const linearData = backtestData.map((entry) => ({
@@ -32,6 +33,7 @@ const BacktestPage: React.FC = () => {
         height={500}
         title="Backtest Chart"
       />
+      <Text />
     </div>
   );
 };
