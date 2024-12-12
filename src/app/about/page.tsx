@@ -31,12 +31,11 @@ const teamMembers: TeamMember[] = [
     github: "https://github.com/availe",
     website: "https://www.availe.io",
     skills: "Frontend Development",
-    technologies: "Next.js",
+    technologies: "Next.js, C++",
     projects: [
-      { name: "Project A", description: "Sample Text" },
-      { name: "Project B", description: "Sample Text" },
+      { name: "PyTex Editor", description: "Make Latex Resume" },
     ],
-    funFact: "Sample Text",
+    funFact: "N/A",
   },
   {
     name: "Elhaam Bhuiyan",
@@ -46,28 +45,12 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://www.linkedin.com/in/elo2718/",
     github: "https://github.com/Elo2718",
     skills: "Data Science",
-    technologies: "Pandas",
+    technologies: "Pandas, Python, Sklearn, C++",
     projects: [
-      { name: "Project A", description: "Sample Text." },
-      { name: "Project B", description: "Sample Text." },
+      { name: "Implied volatility calculator", description: "Calculates the implied volatility of a call and put options." },
     ],
-    funFact: "Sample Text",
-  },
-  {
-    name: "Robert Neagu",
-    major: "Computer Information Systems Major",
-    graduation: "June 2025",
-    university: "Baruch College",
-    linkedIn: "https://www.linkedin.com/in/neagurobert/",
-    github: "https://github.com/robotneagu",
-    skills: "Data Analytics",
-    technologies: "Next.js",
-    projects: [
-      { name: "Project A", description: "Sample Text" },
-      { name: "Project B", description: "Sample Text" },
-    ],
-    funFact: "Sample Text",
-  },
+    funFact: "I do kickboxing and jiu-jitsu",
+  }
 ];
 
 const shortenUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");

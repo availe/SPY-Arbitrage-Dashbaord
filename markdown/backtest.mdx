@@ -16,11 +16,6 @@ Alpha suggests that the strategy delivered returns beyond what traditional marke
   headers={["Aspect", "Current Approach", "Potential Enhancements"]}
   data={[
     {
-      Aspect: "Trading Constraints",
-      "Current Approach": "No explicit trading costs, borrow fees, or constraints for short positions",
-      "Potential Enhancements": "Reflect bid-ask spreads, short borrow costs, and borrowing availability"
-    },
-    {
       Aspect: "Capital & Risk Management",
       "Current Approach": "All capital deployed per trade with stop losses assumed to execute perfectly",
       "Potential Enhancements": "Use partial allocations to manage risk and prepare for sudden market moves"
@@ -29,6 +24,12 @@ Alpha suggests that the strategy delivered returns beyond what traditional marke
       Aspect: "Market Conditions",
       "Current Approach": "Assumes instant fills at the closing price without liquidity issues",
       "Potential Enhancements": "Incorporate realistic order book depth, execution challenges, and partial fills"
+    },
+    {
+      Aspect: "Trading Frequency",
+      "Current Approach": "Current model makes one trade per day.",
+      "Potential Enhancements": "Execute multiple trades per day."
     }
+
   ]}
 />
